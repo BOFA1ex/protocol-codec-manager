@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>protocol-codec-parent</artifactId>
+        <groupId>com.bofa</groupId>
+        <version>1.0.2</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>protocol-codec-all</artifactId>
+
+    <dependencies>
+        <!-- 如果有新的协议接入, 直接丢下面就可以了 -->
+        <dependency>
+            <groupId>com.bofa</groupId>
+            <artifactId>protocol-codec-flv</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bofa</groupId>
+            <artifactId>protocol-codec-mqtt</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bofa</groupId>
+            <artifactId>protocol-codec-coap</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bofa</groupId>
+            <artifactId>protocol-codec-zigbee</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bofa</groupId>
+            <artifactId>protocol-codec-quic</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
