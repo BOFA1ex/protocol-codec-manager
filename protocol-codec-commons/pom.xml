@@ -10,6 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>protocol-codec-commons</artifactId>
     <version>1.0.2</version>
+    <name>protocol :: codec :: commons</name>
 
     <dependencies>
         <dependency>
@@ -26,10 +27,10 @@
             <groupId>io.netty</groupId>
             <artifactId>netty-transport</artifactId>
         </dependency>
-        <!-- spel -->
+        <!-- caffeine -->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-expression</artifactId>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
