@@ -1,7 +1,7 @@
 package com.bofa.protocol.codec.flv.exception;
 
-import com.bofa.codec.method.ResolveExceptionMethod;
-import com.bofa.codec.util.ChannelSpelContextUtils;
+import com.bofa.protocol.codec.method.ResolveExceptionMethod;
+import com.bofa.protocol.codec.util.ChannelCodecContextUtils;
 import com.bofa.protocol.codec.flv.model.FlvFile;
 import com.bofa.protocol.codec.flv.model.FlvTag;
 import io.netty.channel.Channel;
@@ -27,8 +27,8 @@ public class FlvDecodeResolveExceptionMethod implements ResolveExceptionMethod {
                 .map(StackTraceElement::toString)
                 .collect(Collectors.joining("\n")));
         final String expr = StringUtils.uncapitalize(resolveClazz.getSimpleName());
-        final Object flvFile = ChannelSpelContextUtils.processExprAndGet("#" + expr + "", channel, resolveClazz);
-        final List<FlvTag> flvTags = ChannelSpelContextUtils.processExprAndGet("#flvTags", channel, List.class);
+        final Object flvFile = ChannelCodecContextUtils.getVariable(expr, channel);
+        final List<FlvTag> flvTags = (List<FlvTag>) ChannelCodecContextUtils.getVariable("flvTags", channel);
         ((FlvFile) flvFile).setFlvTags(flvTags);
         return flvFile;
     }

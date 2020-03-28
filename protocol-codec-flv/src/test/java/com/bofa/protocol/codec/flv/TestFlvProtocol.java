@@ -1,6 +1,6 @@
 package com.bofa.protocol.codec.flv;
 
-import com.bofa.codec.util.ParserHelper;
+import com.bofa.protocol.codec.util.ParserHelper;
 import com.bofa.protocol.codec.flv.model.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -20,7 +20,7 @@ import java.util.Arrays;
 
 /**
  * @author bofa1ex
- * @since 2020/3/17
+ * @since 2020/3/1w7
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(value = "/spring-core-conf.xml")

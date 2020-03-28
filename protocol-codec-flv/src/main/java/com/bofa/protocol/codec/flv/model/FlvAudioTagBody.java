@@ -1,9 +1,9 @@
 package com.bofa.protocol.codec.flv.model;
 
-import com.bofa.codec.method.convert.BinaryIntegerConvertMethod;
-import com.bofa.codec.method.convert.HexConvertMethod;
+import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
+import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
+import com.bofa.protocol.codec.method.convert.*;
 import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
-import com.bofa.commons.apt4j.annotate.spel.SpelMapping;
 import lombok.Data;
 import lombok.ToString;
 
@@ -13,16 +13,40 @@ import lombok.ToString;
  */
 @Data
 @ToString(exclude = "soundData")
-@SpelMapping("flvAudioTagBody")
+@CacheMapping("flvAudioTagBody")
 public class FlvAudioTagBody {
-    @ByteBufConvert(index = "0", length = "1", convertMethod = BinaryIntegerConvertMethod.class, parameters = {"0", "3"})
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "0"),
+            length = @ByteBufInternalPoint(step = "1"),
+            convertMethod = BinaryIntegerConvertMethod.class,
+            parameters = {"0", "3"}
+    )
     private Integer soundFormat;
-    @ByteBufConvert(index = "0", length = "1", convertMethod = BinaryIntegerConvertMethod.class, parameters = {"3", "5"})
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "-1"),
+            length = @ByteBufInternalPoint(step = "1"),
+            convertMethod = BinaryIntegerConvertMethod.class,
+            parameters = {"3", "5"}
+    )
     private Integer soundRate;
-    @ByteBufConvert(index = "0", length = "1", convertMethod = BinaryIntegerConvertMethod.class, parameters = {"5", "6"})
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "-1"),
+            length = @ByteBufInternalPoint(step = "1"),
+            convertMethod = BinaryIntegerConvertMethod.class,
+            parameters = {"5", "6"}
+    )
     private Integer soundSize;
-    @ByteBufConvert(index = "0", length = "1", convertMethod = BinaryIntegerConvertMethod.class, parameters = {"6", "7"})
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "-1"),
+            length = @ByteBufInternalPoint(step = "1"),
+            convertMethod = BinaryIntegerConvertMethod.class,
+            parameters = {"6", "7"}
+    )
     private Integer soundType;
-    @ByteBufConvert(index = "1", length = "#flvAudioTagBody_buffer.readableBytes()", convertMethod = HexConvertMethod.class)
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "0"),
+            length = @ByteBufInternalPoint(step = "0", type = ByteBufInternalPoint.StepType.REVERSE),
+            convertMethod = HexConvertMethod.class
+    )
     private String soundData;
 }

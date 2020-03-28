@@ -1,9 +1,10 @@
 package com.bofa.protocol.codec.flv.model;
 
-import com.bofa.codec.method.convert.BinaryIntegerConvertMethod;
-import com.bofa.codec.method.convert.HexConvertMethod;
+import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
+import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
+import com.bofa.protocol.codec.method.convert.BinaryIntegerConvertMethod;
+import com.bofa.protocol.codec.method.convert.HexConvertMethod;
 import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
-import com.bofa.commons.apt4j.annotate.spel.SpelMapping;
 import lombok.Data;
 import lombok.ToString;
 
@@ -13,12 +14,26 @@ import lombok.ToString;
  */
 @Data
 @ToString(exclude = "data")
-@SpelMapping("flvVideoTagBody")
+@CacheMapping("flvVideoTagBody")
 public class FlvVideoTagBody {
-    @ByteBufConvert(index = "0", length = "1", convertMethod = BinaryIntegerConvertMethod.class, parameters = {"0", "3"})
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "0"),
+            length = @ByteBufInternalPoint(step = "1"),
+            convertMethod = BinaryIntegerConvertMethod.class,
+            parameters = {"0", "3"}
+    )
     private Integer frameType;
-    @ByteBufConvert(index = "0", length = "1", convertMethod = BinaryIntegerConvertMethod.class, parameters = {"3", "7"})
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "-1"),
+            length = @ByteBufInternalPoint(step = "1"),
+            convertMethod = BinaryIntegerConvertMethod.class,
+            parameters = {"3", "7"}
+    )
     private Integer codecId;
-    @ByteBufConvert(index = "0", length = "#flvVideoTagBody_buffer.readableBytes()", convertMethod = HexConvertMethod.class)
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "0"),
+            length = @ByteBufInternalPoint(step = "0", type = ByteBufInternalPoint.StepType.REVERSE),
+            convertMethod = HexConvertMethod.class
+    )
     private String data;
 }

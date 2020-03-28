@@ -1,8 +1,9 @@
 package com.bofa.protocol.codec.flv.model;
 
-import com.bofa.codec.method.convert.HexConvertMethod;
+import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
+import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
+import com.bofa.protocol.codec.method.convert.HexConvertMethod;
 import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
-import com.bofa.commons.apt4j.annotate.spel.SpelMapping;
 import lombok.Data;
 
 /**
@@ -11,8 +12,12 @@ import lombok.Data;
  */
 @Data
 //@ToString(exclude = "data")
-@SpelMapping("flvScriptTagBody")
+@CacheMapping("flvScriptTagBody")
 public class FlvScriptTagBody {
-    @ByteBufConvert(index = "0", length = "#flvScriptTagBody_buffer.readableBytes()", convertMethod = HexConvertMethod.class)
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "0"),
+            length = @ByteBufInternalPoint(step = "0", type = ByteBufInternalPoint.StepType.REVERSE),
+            convertMethod = HexConvertMethod.class
+    )
     private String data;
 }
