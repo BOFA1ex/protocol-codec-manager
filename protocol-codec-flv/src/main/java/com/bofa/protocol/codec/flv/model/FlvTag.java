@@ -54,7 +54,7 @@ public class FlvTag {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "flvTag", prop = "tagType", keyClazz = FlvTag.class),
+                    key = "flvTag", prop = "dataLength", keyClazz = FlvTag.class),
                     type = ByteBufInternalPoint.StepType.MODEL
             ),
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
@@ -65,7 +65,7 @@ public class FlvTag {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "flvTag", prop = "tagType", keyClazz = FlvTag.class),
+                    key = "flvTag", prop = "dataLength", keyClazz = FlvTag.class),
                     type = ByteBufInternalPoint.StepType.MODEL
             ),
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
@@ -76,7 +76,7 @@ public class FlvTag {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "flvTag", prop = "tagType", keyClazz = FlvTag.class),
+                    key = "flvTag", prop = "dataLength", keyClazz = FlvTag.class),
                     type = ByteBufInternalPoint.StepType.MODEL
             ),
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(

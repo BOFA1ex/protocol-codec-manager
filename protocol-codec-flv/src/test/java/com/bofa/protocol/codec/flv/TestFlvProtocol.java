@@ -42,7 +42,6 @@ public class TestFlvProtocol {
         flvFile.setTypeFlagsAudio(1);
         flvFile.setTypeFlagsReserved2(1);
         flvFile.setDataOffset(15);
-        flvFile.setTest(1000);
         final FlvTag flvTag = new FlvTag();
         flvTag.setPrevTagSize(1);
         flvTag.setDataLength(10);
