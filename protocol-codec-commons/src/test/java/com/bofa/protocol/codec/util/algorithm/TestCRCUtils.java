@@ -1,4 +1,4 @@
-package com.bofa.codec.util.algorithm;
+package com.bofa.protocol.codec.util.algorithm;
 
 import org.junit.Test;
 

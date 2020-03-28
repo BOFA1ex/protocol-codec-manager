@@ -1,9 +1,8 @@
-package com.bofa.codec.util.algorithm;
+package com.bofa.protocol.codec.util.algorithm;
 
-import com.bofa.codec.util.ByteUtils;
+import com.bofa.protocol.codec.util.ByteUtils;
 import org.junit.Test;
 
-import java.security.NoSuchAlgorithmException;
 
 /**
  * @author bofa1ex
@@ -12,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 public class TestPBEUtils {
 
     @Test
-    public void pbe_decrypt() throws NoSuchAlgorithmException {
+    public void pbe_decrypt(){
         String cmd = "hello world";
         byte[] data = new byte[]{0x1, 0x2};
         final byte[] salt = RandomGenUtils.salt(16);

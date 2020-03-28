@@ -1,7 +1,7 @@
-package com.bofa.codec.util.algorithm;
+package com.bofa.protocol.codec.util.algorithm;
 
 
-import com.bofa.codec.util.ByteUtils;
+import com.bofa.protocol.codec.util.ByteUtils;
 import org.junit.Test;
 
 import java.security.KeyPair;
