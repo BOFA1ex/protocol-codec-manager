@@ -8,8 +8,9 @@ import io.netty.channel.embedded.EmbeddedChannel;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -22,7 +23,8 @@ import java.util.Arrays;
  * @author bofa1ex
  * @since 2020/3/1w7
  */
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringRunner.class)
+@SpringBootTest
 @ContextConfiguration(value = "/spring-core-conf.xml")
 public class TestFlvProtocol {
 

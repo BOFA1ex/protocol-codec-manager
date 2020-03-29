@@ -31,39 +31,20 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jmh.version>1.21</jmh.version>
-        <logback.version>1.2.3</logback.version>
-        <netty.version>4.1.16.Final</netty.version>
-        <spring.version>5.2.2.RELEASE</spring.version>
         <bouncycastyle.version>1.64</bouncycastyle.version>
         <guava.version>28.2-jre</guava.version>
-        <caffeine.version>2.8.1</caffeine.version>
+        <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
-            <!-- caffeine -->
             <dependency>
-                <groupId>com.github.ben-manes.caffeine</groupId>
-                <artifactId>caffeine</artifactId>
-                <version>${caffeine.version}</version>
-            </dependency>
-            <!-- logback -->
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>${logback.version}</version>
-            </dependency>
-            <!-- ByteBuf/channel -->
-            <dependency>
-                <groupId>io.netty</groupId>
-                <artifactId>netty-transport</artifactId>
-                <version>${netty.version}</version>
-            </dependency>
-            <!-- spring context -->
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-context</artifactId>
-                <version>${spring.version}</version>
+                <!-- Import dependency management from Spring Boot -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring.boot.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
             </dependency>
             <!-- jce extension -->
             <dependency>
@@ -77,11 +58,6 @@
                 <artifactId>junit</artifactId>
                 <version>4.12</version>
                 <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.springframework</groupId>
-                <artifactId>spring-test</artifactId>
-                <version>${spring.version}</version>
             </dependency>
             <!-- jmh -->
             <dependency>
