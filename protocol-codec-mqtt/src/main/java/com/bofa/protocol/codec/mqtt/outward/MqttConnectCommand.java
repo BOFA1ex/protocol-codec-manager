@@ -18,9 +18,16 @@ public class MqttConnectCommand extends AbstractMqttCommand {
 
     /* ******************************** 可变报文头部 固定10字节 ********************************/
 
+    @ByteBufConvert(
+            index = @ByteBufInternalPoint(step = "0"),
+            length = @ByteBufInternalPoint(step = "2"),
+            convertMethod = IntegerConvertMethod.class
+    )
+    private Integer protocolNameLength = 4;
+
     /** 协议名不正确的情况下, 不处理connect报文, 防火墙可以根据该字段来识别mqtt流量 */
     @ByteBufConvert(
-            index = @ByteBufInternalPoint(step = "2"),
+            index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(step = "4"),
             convertMethod = UnicodeConvertMethod.class,
             parameters = UnicodeConvertMethod.CHARSET_NAME_UTF_8
