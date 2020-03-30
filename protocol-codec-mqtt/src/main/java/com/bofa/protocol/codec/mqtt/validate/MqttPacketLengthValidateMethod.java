@@ -27,7 +27,7 @@ public class MqttPacketLengthValidateMethod implements ValidateMethod {
         // packetLength真实所占字节数
         final int packetLengthRealBits = packetLengthBuffer.readerIndex();
         final int packetLengthOffset = 1;
-        final int computedPacketLength = buffer.readableBytes() - packetLengthOffset - packetLengthRealBits;
+        final int computedPacketLength = buffer.writerIndex() - packetLengthOffset - packetLengthRealBits;
         if (computedPacketLength != packetLength) {
             throw new RuntimeException(Strings.lenientFormat("mqttPacketLength校验失败 [%d] != [%d]", packetLength, parameters[0]));
         }
