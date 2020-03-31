@@ -4,6 +4,7 @@ import com.bofa.protocol.codec.method.ConvertMethod;
 import com.bofa.protocol.codec.util.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -14,9 +15,8 @@ import java.time.format.DateTimeFormatter;
  * @since 2020/3/16
  */
 @Component
-public class BcdLocalDateTimeByteBufConvertMethod implements ConvertMethod<LocalDateTime> {
-
-    public static final BcdLocalDateTimeByteBufConvertMethod INSTANCE = new BcdLocalDateTimeByteBufConvertMethod();
+@Description("缓冲区字节流转换LocalDateTime")
+public class BcdLocalDateTimeConvertMethod implements ConvertMethod<LocalDateTime> {
 
     private static final String DEFAULT_DATE_TIME_FORMATTER = "yyyyMMddHHmmss";
 

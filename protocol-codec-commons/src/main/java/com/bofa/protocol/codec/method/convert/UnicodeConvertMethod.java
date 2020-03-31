@@ -3,13 +3,11 @@ package com.bofa.protocol.codec.method.convert;
 
 import com.bofa.protocol.codec.method.ConvertMethod;
 import com.bofa.protocol.codec.util.ByteBufUtils;
-import com.bofa.protocol.codec.util.ByteUtils;
 import com.google.common.base.Strings;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
-
-import java.nio.charset.Charset;
 
 
 /**
@@ -17,6 +15,7 @@ import java.nio.charset.Charset;
  * @since 2020/1/26
  */
 @Component
+@Description("缓冲区字节流转换为Unicode, 需要给定字符集Charset")
 public class UnicodeConvertMethod implements ConvertMethod<String> {
 
     public static final UnicodeConvertMethod INSTANCE = new UnicodeConvertMethod();

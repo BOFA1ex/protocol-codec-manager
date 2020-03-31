@@ -6,6 +6,7 @@ import com.bofa.protocol.codec.util.algorithm.CRCUtils;
 import com.google.common.base.Strings;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  * @since  2020/3/18
  */
 @Component
+@Description("循环冗余算法校验, crc16-modbus")
 public class Crc16ModeBusValidateMethod implements ValidateMethod {
 
     @Override

@@ -7,6 +7,7 @@ import com.google.common.base.Strings;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 /**
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
  * @since 2020/1/26
  */
 @Component
+@Description("缓冲区字节流转换为Integer")
 public class IntegerConvertMethod implements ConvertMethod<Integer> {
 
     @Autowired

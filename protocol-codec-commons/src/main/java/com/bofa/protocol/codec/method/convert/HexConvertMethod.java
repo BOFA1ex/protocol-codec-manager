@@ -5,6 +5,7 @@ import com.bofa.protocol.codec.method.ConvertMethod;
 import com.bofa.protocol.codec.util.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
  * @since 2020/1/26
  */
 @Component
+@Description("缓冲区字节流转换为Hex")
 public class HexConvertMethod implements ConvertMethod<String> {
 
     @Override

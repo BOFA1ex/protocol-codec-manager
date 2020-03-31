@@ -6,6 +6,7 @@ import com.bofa.protocol.codec.util.ByteBufUtils;
 import com.google.common.base.Strings;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
  * @since 2020/1/26
  */
 @Component
+@Description("缓冲区字节流转换为字节8位中指定区间的二进制值")
 public class BinaryStringConvertMethod implements ConvertMethod<String> {
 
     @Override

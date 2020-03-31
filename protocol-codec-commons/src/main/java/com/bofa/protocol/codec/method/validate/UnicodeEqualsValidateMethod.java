@@ -6,6 +6,7 @@ import com.google.common.base.Strings;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Component;
  * @since 2020/3/21
  */
 @Component
+@Description("unicode校验")
 public class UnicodeEqualsValidateMethod implements ValidateMethod {
 
     @Autowired

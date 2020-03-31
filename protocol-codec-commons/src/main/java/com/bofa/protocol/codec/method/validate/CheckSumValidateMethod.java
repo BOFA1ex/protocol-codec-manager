@@ -4,6 +4,7 @@ import com.bofa.protocol.codec.method.ValidateMethod;
 import com.bofa.protocol.codec.util.ByteBufUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 import java.util.concurrent.atomic.AtomicInteger;
@@ -13,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @since 2020/2/17
  */
 @Component
+@Description("累计求和算法校验")
 public class CheckSumValidateMethod implements ValidateMethod {
 
     @Override

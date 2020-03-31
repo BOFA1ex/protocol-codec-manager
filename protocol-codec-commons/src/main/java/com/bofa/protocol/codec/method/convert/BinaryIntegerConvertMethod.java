@@ -5,6 +5,7 @@ import com.google.common.base.Strings;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Description;
 import org.springframework.stereotype.Component;
 
 /**
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Component;
  * @since 2020/1/26
  */
 @Component
+@Description("缓冲区字节流转换为字节8位中指定区间的二进制值(Integer)")
 public class BinaryIntegerConvertMethod implements ConvertMethod<Integer> {
     @Autowired
     private BinaryStringConvertMethod binaryStringConvertMethod;
