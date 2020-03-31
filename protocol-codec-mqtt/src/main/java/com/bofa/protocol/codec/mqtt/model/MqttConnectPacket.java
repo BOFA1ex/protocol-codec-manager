@@ -1,20 +1,24 @@
-package com.bofa.protocol.codec.mqtt.outward;
+package com.bofa.protocol.codec.mqtt.model;
 
 import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
 import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.*;
 import com.bofa.protocol.codec.method.convert.*;
-import com.bofa.protocol.codec.mqtt.AbstractMqttCommand;
+import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
 import lombok.*;
+import org.springframework.context.annotation.Description;
+
+import javax.validation.constraints.Size;
 
 /**
  * @author bofa1ex
  * @since 2020/3/23
  */
 @Data
+@Description("CONNECT - 连接请求报文")
 @EqualsAndHashCode(callSuper = true)
-@CacheMapping("mqttConnectCommand")
-public class MqttConnectCommand extends AbstractMqttCommand {
+@CacheMapping("mqttConnectPacket")
+public class MqttConnectPacket extends AbstractMqttPacket {
 
     /* ******************************** 可变报文头部 固定10字节 ********************************/
 
@@ -32,6 +36,7 @@ public class MqttConnectCommand extends AbstractMqttCommand {
             convertMethod = UnicodeConvertMethod.class,
             parameters = UnicodeConvertMethod.CHARSET_NAME_UTF_8
     )
+    @Size
     private String protocolName = "MQTT";
 
     /** 如果不支持该协议级别, 在connAck报文中响应返回码0x01, 并断开客户端连接 */
@@ -127,7 +132,7 @@ public class MqttConnectCommand extends AbstractMqttCommand {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "clientIdLength", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "clientIdLength", keyClazz = MqttConnectPacket.class),
                     type = ByteBufInternalPoint.StepType.MODEL
             ),
             convertMethod = UnicodeConvertMethod.class,
@@ -140,7 +145,7 @@ public class MqttConnectCommand extends AbstractMqttCommand {
             length = @ByteBufInternalPoint(step = "2"),
             convertMethod = IntegerConvertMethod.class,
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "willFlag", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "willFlag", keyClazz = MqttConnectPacket.class),
                     compareValue = "1"
             )
     )
@@ -149,11 +154,11 @@ public class MqttConnectCommand extends AbstractMqttCommand {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "willTopicLength", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "willTopicLength", keyClazz = MqttConnectPacket.class),
                     type = ByteBufInternalPoint.StepType.MODEL
             ),
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "willFlag", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "willFlag", keyClazz = MqttConnectPacket.class),
                     compareValue = "1"
             ),
             convertMethod = UnicodeConvertMethod.class,
@@ -167,7 +172,7 @@ public class MqttConnectCommand extends AbstractMqttCommand {
             length = @ByteBufInternalPoint(step = "2"),
             convertMethod = IntegerConvertMethod.class,
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "userNameFlag", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "userNameFlag", keyClazz = MqttConnectPacket.class),
                     compareValue = "1"
             )
     )
@@ -176,11 +181,11 @@ public class MqttConnectCommand extends AbstractMqttCommand {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "useNameLength", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "useNameLength", keyClazz = MqttConnectPacket.class),
                     type = ByteBufInternalPoint.StepType.MODEL
             ),
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "userNameFlag", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "userNameFlag", keyClazz = MqttConnectPacket.class),
                     compareValue = "1"
             ),
             convertMethod = UnicodeConvertMethod.class,
@@ -193,7 +198,7 @@ public class MqttConnectCommand extends AbstractMqttCommand {
             length = @ByteBufInternalPoint(step = "2"),
             convertMethod = IntegerConvertMethod.class,
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "passwordFlag", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "passwordFlag", keyClazz = MqttConnectPacket.class),
                     compareValue = "1"
             )
     )
@@ -202,11 +207,11 @@ public class MqttConnectCommand extends AbstractMqttCommand {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "passwordLength", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "passwordLength", keyClazz = MqttConnectPacket.class),
                     type = ByteBufInternalPoint.StepType.MODEL
             ),
             condition = @ByteBufInternalCondition(model = @ByteBufInternalModel(
-                    key = "mqttConnectCommand", prop = "passwordFlag", keyClazz = MqttConnectCommand.class),
+                    key = "mqttConnectPacket", prop = "passwordFlag", keyClazz = MqttConnectPacket.class),
                     compareValue = "1"
             ),
             convertMethod = UnicodeConvertMethod.class,

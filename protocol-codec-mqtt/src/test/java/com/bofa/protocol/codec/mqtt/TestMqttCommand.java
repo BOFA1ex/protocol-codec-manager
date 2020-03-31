@@ -1,25 +1,21 @@
 package com.bofa.protocol.codec.mqtt;
 
-import com.bofa.protocol.codec.mqtt.outward.MqttConnectCommand;
+import com.bofa.protocol.codec.mqtt.model.MqttConnectPacket;
 import com.bofa.protocol.codec.util.ByteBufUtils;
-import com.bofa.protocol.codec.util.ByteUtils;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.embedded.EmbeddedChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.InetSocketAddress;
-import java.net.Socket;
 import java.nio.channels.SocketChannel;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author bofa1ex
@@ -39,9 +35,8 @@ public class TestMqttCommand {
 
     @Test
     public void testConnect() {
-        final MqttConnectCommand command = new MqttConnectCommand();
+        final MqttConnectPacket command = new MqttConnectPacket();
         command.setPacketType(1);
-        command.setPacketTypeSign(0);
         command.setCleanSession(1);
         command.setWillFlag(0);
         command.setWillQoS(0);
@@ -56,9 +51,20 @@ public class TestMqttCommand {
         command.setPasswordLength("123456".getBytes().length);
         command.setPassword("123456");
         data = mqttParser.encode(command, channel);
-        final String hex = ByteBufUtils.buffer2Hex(data);
+        final String hex = ByteBufUtils.buffer2HexNonRead(data);
         System.out.println("hex -> " + hex);
 //        final MqttConnectCommand decode = mqttParser.decode(encode.resetReaderIndex(), channel);
 //        System.out.println("decode -> " + decode);
     }
+//
+//    @After
+//    public void flush() throws IOException, InterruptedException {
+//        final SocketChannel socketChannel = SocketChannel.open();
+//        socketChannel.connect(new InetSocketAddress(24028));
+//        final ByteBuf leftBuffer = data.slice(0, data.writerIndex() - 1);
+//        final ByteBuf rightBuffer = data.slice(data.writerIndex() - 1, 1);
+//        socketChannel.write(leftBuffer.nioBuffer());
+//        TimeUnit.SECONDS.sleep(10);
+//        socketChannel.write(rightBuffer.nioBuffer());
+//    }
 }

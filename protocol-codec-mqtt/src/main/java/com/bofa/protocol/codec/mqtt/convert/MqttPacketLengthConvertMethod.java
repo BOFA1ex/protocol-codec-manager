@@ -1,5 +1,6 @@
 package com.bofa.protocol.codec.mqtt.convert;
 
+import com.bofa.protocol.codec.exception.ByteBufValidateException;
 import com.bofa.protocol.codec.method.ConvertMethod;
 import com.bofa.protocol.codec.util.ChannelCodecContextUtils;
 import io.netty.buffer.*;
@@ -35,7 +36,7 @@ public class MqttPacketLengthConvertMethod implements ConvertMethod<Integer> {
 
         // MQTT protocol limits Remaining Length to 4 bytes
         if (loops == 4 && (digit & 0x80) != 0) {
-            throw new IllegalArgumentException("remaining length exceeds 4 digits");
+            throw new ByteBufValidateException("remaining length exceeds 4 digits");
         }
         return remainingLength;
     }

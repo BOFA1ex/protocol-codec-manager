@@ -2,7 +2,7 @@ package com.bofa.protocol.codec.mqtt;
 
 
 import com.bofa.commons.apt4j.annotate.protocol.*;
-import com.bofa.protocol.codec.mqtt.outward.MqttConnectCommand;
+import com.bofa.protocol.codec.mqtt.model.*;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 
@@ -14,8 +14,86 @@ import io.netty.channel.Channel;
 public interface MqttParser {
 
     @ByteBufEncode(initialCapacity = 2 << 7)
-    ByteBuf encode(MqttConnectCommand command, Channel channel);
+    ByteBuf encode(MqttConnectPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 3)
+    ByteBuf encode(MqttConnectAckPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 3)
+    ByteBuf encode(MqttDisConnectPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 3)
+    ByteBuf encode(MqttPingReqPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 3)
+    ByteBuf encode(MqttPingResponsePacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 4)
+    ByteBuf encode(MqttPublishAckPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 4)
+    ByteBuf encode(MqttPublishCompPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 7)
+    ByteBuf encode(MqttPublishPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 4)
+    ByteBuf encode(MqttPublishRecPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 4)
+    ByteBuf encode(MqttPublishRelPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 7)
+    ByteBuf encode(MqttSubscribePacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 5)
+    ByteBuf encode(MqttSubscribeAckPacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 7)
+    ByteBuf encode(MqttUnSubscribePacket command, Channel channel);
+
+    @ByteBufEncode(initialCapacity = 2 << 4)
+    ByteBuf encode(MqttUnSubscribeAckPacket command, Channel channel);
 
     @ByteBufDecode()
-    MqttConnectCommand decode(ByteBuf buffer, Channel channel);
+    MqttConnectPacket decodeMqttConnectPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttConnectAckPacket decodeMqttConnectAckPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttDisConnectPacket decodeMqttDisConnectPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttPingReqPacket decodeMqttPingReqPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttPingResponsePacket decodeMqttPingResponsePacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttPublishAckPacket decodeMqttPublishAckPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttPublishCompPacket decodeMqttPublishCompPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttPublishPacket decodeMqttPublishPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttPublishRecPacket decodeMqttPublishRecPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttPublishRelPacket decodeMqttPublishRelPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttSubscribePacket decodeMqttSubscribePacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttSubscribeAckPacket decodeMqttSubscribeAckPacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttUnSubscribePacket decodeMqttUnSubscribePacket(ByteBuf buffer, Channel channel);
+
+    @ByteBufDecode()
+    MqttUnSubscribeAckPacket decodeMqttUnSubscribeAckPacket(ByteBuf buffer, Channel channel);
 }
