@@ -5,6 +5,7 @@ import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
 import com.bofa.protocol.codec.method.convert.*;
 import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
+import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.context.annotation.Description;
@@ -21,6 +22,17 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @CacheMapping("mqttSubscribeAckPacket")
 public class MqttSubscribeAckPacket extends AbstractMqttPacket {
+
+    public static final String ACK_QOS_0 = "00";
+    public static final String ACK_QOS_1 = "01";
+    public static final String ACK_QOS_2 = "02";
+    public static final String ACK_ERROR = "80";
+
+    public static MqttSubscribeAckPacket mapper(){
+        final MqttSubscribeAckPacket mqttSubscribeAckPacket = new MqttSubscribeAckPacket();
+        mqttSubscribeAckPacket.setPacketType(MqttPacketTypeEnum.SUBACK.packetType);
+        return mqttSubscribeAckPacket;
+    }
 
     /* ******************************** 可变报文头部 固定2字节 ********************************/
 

@@ -4,8 +4,7 @@ import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
 import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalModel;
 import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
-import com.bofa.protocol.codec.method.convert.IntegerConvertMethod;
-import com.bofa.protocol.codec.method.convert.UnicodeConvertMethod;
+import com.bofa.protocol.codec.method.convert.*;
 import lombok.Data;
 import org.springframework.context.annotation.Description;
 
@@ -41,7 +40,8 @@ public class MqttTopicFilterPacket {
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
             length = @ByteBufInternalPoint(step = "1"),
-            convertMethod = IntegerConvertMethod.class
+            convertMethod = BinaryIntegerConvertMethod.class,
+            parameters = {"6","8"}
     )
     private Integer requestedQos;
 }

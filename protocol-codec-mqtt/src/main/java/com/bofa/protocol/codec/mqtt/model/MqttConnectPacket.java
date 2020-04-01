@@ -5,6 +5,7 @@ import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.*;
 import com.bofa.protocol.codec.method.convert.*;
 import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
+import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.*;
 import org.springframework.context.annotation.Description;
 
@@ -19,6 +20,14 @@ import javax.validation.constraints.Size;
 @EqualsAndHashCode(callSuper = true)
 @CacheMapping("mqttConnectPacket")
 public class MqttConnectPacket extends AbstractMqttPacket {
+
+    public static MqttConnectPacket mapper(){
+        final MqttConnectPacket mqttConnectPacket = new MqttConnectPacket();
+        mqttConnectPacket.setPacketType(MqttPacketTypeEnum.CONNECT.packetType);
+        mqttConnectPacket.setDupSign(0);
+        mqttConnectPacket.setQosLevel(0);
+        return mqttConnectPacket;
+    }
 
     /* ******************************** 可变报文头部 固定10字节 ********************************/
 

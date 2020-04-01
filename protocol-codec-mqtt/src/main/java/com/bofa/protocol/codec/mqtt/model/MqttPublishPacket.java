@@ -5,6 +5,7 @@ import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.*;
 import com.bofa.protocol.codec.method.convert.*;
 import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
+import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.context.annotation.Description;
@@ -18,6 +19,12 @@ import org.springframework.context.annotation.Description;
 @EqualsAndHashCode(callSuper = true)
 @CacheMapping("mqttPublishPacket")
 public class MqttPublishPacket extends AbstractMqttPacket {
+
+    public static MqttPublishPacket mapper(){
+        final MqttPublishPacket mqttPublishPacket = new MqttPublishPacket();
+        mqttPublishPacket.setPacketType(MqttPacketTypeEnum.PUBLISH.packetType);
+        return mqttPublishPacket;
+    }
 
     /* ******************************** 可变报文头部 ********************************/
 

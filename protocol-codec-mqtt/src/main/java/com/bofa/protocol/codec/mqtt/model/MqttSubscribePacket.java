@@ -5,6 +5,7 @@ import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
 import com.bofa.protocol.codec.method.convert.IntegerConvertMethod;
 import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
+import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.context.annotation.Description;
@@ -20,6 +21,13 @@ import java.util.List;
 @EqualsAndHashCode(callSuper = true)
 @CacheMapping("mqttSubscribePacket")
 public class MqttSubscribePacket extends AbstractMqttPacket {
+
+    public static MqttSubscribePacket mapper(){
+        final MqttSubscribePacket mqttSubscribePacket = new MqttSubscribePacket();
+        mqttSubscribePacket.setPacketType(MqttPacketTypeEnum.SUBSCRIBE.packetType);
+        mqttSubscribePacket.setQosLevel(1);
+        return mqttSubscribePacket;
+    }
 
     /* ******************************** 可变报文头部 固定2字节 ********************************/
 

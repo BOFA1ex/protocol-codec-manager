@@ -5,6 +5,7 @@ import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.*;
 import com.bofa.protocol.codec.method.convert.IntegerConvertMethod;
 import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
+import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.context.annotation.Description;
@@ -19,6 +20,11 @@ import org.springframework.context.annotation.Description;
 @CacheMapping("mqttPublishRecPacket")
 public class MqttPublishRecPacket extends AbstractMqttPacket {
 
+    public static MqttPublishRecPacket mapper(){
+        final MqttPublishRecPacket mqttPublishRecPacket = new MqttPublishRecPacket();
+        mqttPublishRecPacket.setPacketType(MqttPacketTypeEnum.PUBREC.packetType);
+        return mqttPublishRecPacket;
+    }
     /* ******************************** 可变报文头部 固定2字节 ********************************/
 
     /** 报文标识符, 只有qos等级为1或2时, 该字段才出现在publish报文*/

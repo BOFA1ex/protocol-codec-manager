@@ -5,6 +5,7 @@ import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
 import com.bofa.protocol.codec.method.convert.IntegerConvertMethod;
 import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
+import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import org.springframework.context.annotation.Description;
@@ -21,6 +22,12 @@ import java.util.List;
 @CacheMapping("mqttUnSubscribePacket")
 public class MqttUnSubscribePacket extends AbstractMqttPacket {
 
+    public static MqttUnSubscribePacket mapper(){
+        final MqttUnSubscribePacket mqttUnSubscribePacket = new MqttUnSubscribePacket();
+        mqttUnSubscribePacket.setPacketType(MqttPacketTypeEnum.UNSUBSCRIBE.packetType);
+        mqttUnSubscribePacket.setQosLevel(1);
+        return mqttUnSubscribePacket;
+    }
     /* ******************************** 可变报文头部 固定2字节 ********************************/
 
     /** 报文标识符, 只有qos等级为1或2时, 该字段才出现在publish报文*/
