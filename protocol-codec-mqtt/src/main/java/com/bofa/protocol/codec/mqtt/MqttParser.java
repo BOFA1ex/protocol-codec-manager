@@ -13,46 +13,46 @@ import io.netty.channel.Channel;
 @Protocol(implName = "MqttParserImpl")
 public interface MqttParser {
 
-    @ByteBufEncode(initialCapacity = 2 << 7)
+    @ByteBufEncode(initialCapacity = 2 << 7, maxCapacity = 2 << 8)
     ByteBuf encode(MqttConnectPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 3)
+    @ByteBufEncode(initialCapacity = 2 << 3, maxCapacity = 2 << 3)
     ByteBuf encode(MqttConnectAckPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 3)
+    @ByteBufEncode(initialCapacity = 2 << 3, maxCapacity = 2 << 3)
     ByteBuf encode(MqttDisConnectPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 3)
+    @ByteBufEncode(initialCapacity = 2 << 3, maxCapacity = 2 << 3)
     ByteBuf encode(MqttPingReqPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 3)
+    @ByteBufEncode(initialCapacity = 2 << 3, maxCapacity = 2 << 3)
     ByteBuf encode(MqttPingResponsePacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 4)
+    @ByteBufEncode(initialCapacity = 2 << 4, maxCapacity = 2 << 5)
     ByteBuf encode(MqttPublishAckPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 4)
+    @ByteBufEncode(initialCapacity = 2 << 4, maxCapacity = 2 << 5)
     ByteBuf encode(MqttPublishCompPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 7)
+    @ByteBufEncode(initialCapacity = 2 << 7, maxCapacity = 2 << 8)
     ByteBuf encode(MqttPublishPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 4)
+    @ByteBufEncode(initialCapacity = 2 << 4, maxCapacity = 2 << 5)
     ByteBuf encode(MqttPublishRecPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 4)
+    @ByteBufEncode(initialCapacity = 2 << 4, maxCapacity = 2 << 5)
     ByteBuf encode(MqttPublishRelPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 7)
+    @ByteBufEncode(initialCapacity = 2 << 7, maxCapacity = 2 << 8)
     ByteBuf encode(MqttSubscribePacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 5)
+    @ByteBufEncode(initialCapacity = 2 << 5, maxCapacity = 2 << 6)
     ByteBuf encode(MqttSubscribeAckPacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 7)
+    @ByteBufEncode(initialCapacity = 2 << 7, maxCapacity = 2 << 8)
     ByteBuf encode(MqttUnSubscribePacket command, Channel channel);
 
-    @ByteBufEncode(initialCapacity = 2 << 4)
+    @ByteBufEncode(initialCapacity = 2 << 4, maxCapacity = 2 << 5)
     ByteBuf encode(MqttUnSubscribeAckPacket command, Channel channel);
 
     @ByteBufDecode()

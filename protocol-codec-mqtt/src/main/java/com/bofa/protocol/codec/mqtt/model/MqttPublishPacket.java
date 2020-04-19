@@ -4,7 +4,6 @@ import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
 import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.*;
 import com.bofa.protocol.codec.method.convert.*;
-import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
 import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -19,12 +18,6 @@ import org.springframework.context.annotation.Description;
 @EqualsAndHashCode(callSuper = true)
 @CacheMapping("mqttPublishPacket")
 public class MqttPublishPacket extends AbstractMqttPacket {
-
-    public static MqttPublishPacket mapper(){
-        final MqttPublishPacket mqttPublishPacket = new MqttPublishPacket();
-        mqttPublishPacket.setPacketType(MqttPacketTypeEnum.PUBLISH.packetType);
-        return mqttPublishPacket;
-    }
 
     /* ******************************** 可变报文头部 ********************************/
 
@@ -63,21 +56,10 @@ public class MqttPublishPacket extends AbstractMqttPacket {
 
     /* ******************************** 有效载荷 ********************************/
 
-    /** 有效载荷长度 */
-    @ByteBufConvert(
-            index = @ByteBufInternalPoint(step = "0"),
-            length = @ByteBufInternalPoint(step = "2"),
-            convertMethod = IntegerConvertMethod.class
-    )
-    private Integer payloadLength;
-
     /** 有效载荷 */
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
-            length = @ByteBufInternalPoint(model = @ByteBufInternalModel(
-                    key = "mqttPublishPacket", prop = "payloadLength", keyClazz = MqttPublishPacket.class),
-                    type = ByteBufInternalPoint.StepType.MODEL
-            ),
+            length = @ByteBufInternalPoint(step = "0", type = ByteBufInternalPoint.StepType.REVERSE),
             convertMethod = UnicodeConvertMethod.class,
             parameters = UnicodeConvertMethod.CHARSET_NAME_UTF_8
     )

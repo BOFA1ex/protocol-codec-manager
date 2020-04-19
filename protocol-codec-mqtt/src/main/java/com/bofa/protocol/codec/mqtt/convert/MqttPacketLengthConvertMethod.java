@@ -16,8 +16,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class MqttPacketLengthConvertMethod implements ConvertMethod<Integer> {
 
-    public static final String PACKET_LENGTH_OFFSET = "packetLengthOffset";
-
     public static final MqttPacketLengthConvertMethod INSTANCE = new MqttPacketLengthConvertMethod();
 
     @Override
@@ -44,7 +42,8 @@ public class MqttPacketLengthConvertMethod implements ConvertMethod<Integer> {
     @Override
     public ByteBuf encode(Integer integer, int capacity, Channel channel, String... parameters) {
         // 直接走mapper自动计算packetLength, 不需要手动注入长度
-        return PooledByteBufAllocator.DEFAULT.buffer(capacity).writeBytes(new byte[]{0x00, 0x00, 0x00, 0x00});
+        final int defaultCapacity = 4;
+        return PooledByteBufAllocator.DEFAULT.buffer(defaultCapacity).writeBytes(new byte[]{0x00, 0x00, 0x00, 0x00});
     }
 
     public static void main(String[] args) {

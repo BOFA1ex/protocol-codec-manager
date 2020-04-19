@@ -1,4 +1,4 @@
-package com.bofa.protocol.codec.mqtt;
+package com.bofa.protocol.codec.mqtt.model;
 
 import com.bofa.commons.apt4j.annotate.protocol.*;
 import com.bofa.commons.apt4j.annotate.protocol.internal.ByteBufInternalPoint;
@@ -73,7 +73,7 @@ public abstract class AbstractMqttPacket {
     /** 这里直接传默认最大长度4字节 */
     @ByteBufConvert(
             index = @ByteBufInternalPoint(step = "0"),
-            length = @ByteBufInternalPoint(step = "4"),
+            length = @ByteBufInternalPoint(step = "0", type = ByteBufInternalPoint.StepType.REVERSE),
             convertMethod = MqttPacketLengthConvertMethod.class
     )
     private Integer packetLength = 0xffffff7f;

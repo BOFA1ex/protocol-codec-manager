@@ -4,7 +4,6 @@ import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
 import com.bofa.commons.apt4j.annotate.protocol.ByteBufConvert;
 import com.bofa.commons.apt4j.annotate.protocol.internal.*;
 import com.bofa.protocol.codec.method.convert.*;
-import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
 import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.*;
 import org.springframework.context.annotation.Description;

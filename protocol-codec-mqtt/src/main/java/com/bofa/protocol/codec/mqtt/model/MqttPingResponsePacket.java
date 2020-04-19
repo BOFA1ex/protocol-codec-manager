@@ -1,7 +1,6 @@
 package com.bofa.protocol.codec.mqtt.model;
 
 import com.bofa.commons.apt4j.annotate.cache.CacheMapping;
-import com.bofa.protocol.codec.mqtt.AbstractMqttPacket;
 import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
