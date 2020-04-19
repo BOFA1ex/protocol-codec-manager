@@ -41,7 +41,7 @@ public class AESUtils {
             if (isPadding) {
                 cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", BouncyCastleProvider.PROVIDER_NAME);
             } else {
-                cipher = Cipher.getInstance("AES/ECB/NoPadding");
+                cipher = Cipher.getInstance("AES/CBC/NoPadding");
             }
             cipher.init(Cipher.ENCRYPT_MODE, keySpec, ivps);
             byte[] result = cipher.doFinal(data);
@@ -71,7 +71,7 @@ public class AESUtils {
             if (isPadding) {
                 cipher = Cipher.getInstance("AES/CBC/PKCS7Padding", BouncyCastleProvider.PROVIDER_NAME);
             } else {
-                cipher = Cipher.getInstance("AES/ECB/NoPadding");
+                cipher = Cipher.getInstance("AES/CBC/NoPadding");
             }
             cipher.init(Cipher.DECRYPT_MODE, keySpec, ivps);
             return cipher.doFinal(realData);
