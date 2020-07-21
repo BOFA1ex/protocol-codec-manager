@@ -52,13 +52,6 @@
                 <artifactId>bcprov-jdk15on</artifactId>
                 <version>${bouncycastyle.version}</version>
             </dependency>
-            <!-- test dependencies -->
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <version>4.12</version>
-                <scope>test</scope>
-            </dependency>
             <!-- jmh -->
             <dependency>
                 <groupId>org.openjdk.jmh</groupId>
