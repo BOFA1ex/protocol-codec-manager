@@ -8,7 +8,6 @@ import com.bofa.protocol.codec.mqtt.constants.MqttPacketTypeEnum;
 import lombok.*;
 import org.springframework.context.annotation.Description;
 
-import javax.validation.constraints.Size;
 
 /**
  * @author bofa1ex
@@ -44,7 +43,6 @@ public class MqttConnectPacket extends AbstractMqttPacket {
             convertMethod = UnicodeConvertMethod.class,
             parameters = UnicodeConvertMethod.CHARSET_NAME_UTF_8
     )
-    @Size
     private String protocolName = "MQTT";
 
     /** 如果不支持该协议级别, 在connAck报文中响应返回码0x01, 并断开客户端连接 */
