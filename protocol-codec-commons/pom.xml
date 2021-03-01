@@ -15,7 +15,7 @@
     <dependencies>
         <dependency>
             <groupId>com.bofa</groupId>
-            <artifactId>commons-apt4j-processor</artifactId>
+            <artifactId>protocol-codec-apt4j-processor</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
