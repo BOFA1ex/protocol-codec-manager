@@ -31,7 +31,7 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <jmh.version>1.21</jmh.version>
-        <bouncycastyle.version>1.64</bouncycastyle.version>
+        <bouncycastyle.version>1.67</bouncycastyle.version>
         <guava.version>28.2-jre</guava.version>
         <spring.boot.version>2.2.6.RELEASE</spring.boot.version>
     </properties>
